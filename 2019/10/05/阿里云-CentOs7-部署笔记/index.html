@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="SmileXin,Kylin,Hexo, NexT" />
+  <meta name="keywords" content="NodeJs,Nginx," />
 
 
 
@@ -86,16 +86,18 @@
 
 
 
-<meta name="description" content="欢迎来到SmileXin的技术分享站~">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SmileXin">
-<meta property="og:url" content="clausclaus.github.io/index.html">
+<meta name="description" content="配置静态站点http://deploy-static.smilexin.com/  通过ssh登录aliyun服务器，然后执行mkdir /var/www/html/imooc/ &amp;amp;&amp;amp; cd /var/www/html/imooc/ &amp;amp;&amp;amp; touch app.js，app.js内容为：  12345678910111213141516171819202122cons">
+<meta name="keywords" content="NodeJs,Nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里云 CentOs7 部署笔记">
+<meta property="og:url" content="clausclaus.github.io/2019/10/05/阿里云-CentOs7-部署笔记/index.html">
 <meta property="og:site_name" content="SmileXin">
-<meta property="og:description" content="欢迎来到SmileXin的技术分享站~">
+<meta property="og:description" content="配置静态站点http://deploy-static.smilexin.com/  通过ssh登录aliyun服务器，然后执行mkdir /var/www/html/imooc/ &amp;amp;&amp;amp; cd /var/www/html/imooc/ &amp;amp;&amp;amp; touch app.js，app.js内容为：  12345678910111213141516171819202122cons">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-05T08:20:28.432Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SmileXin">
-<meta name="twitter:description" content="欢迎来到SmileXin的技术分享站~">
+<meta name="twitter:title" content="阿里云 CentOs7 部署笔记">
+<meta name="twitter:description" content="配置静态站点http://deploy-static.smilexin.com/  通过ssh登录aliyun服务器，然后执行mkdir /var/www/html/imooc/ &amp;amp;&amp;amp; cd /var/www/html/imooc/ &amp;amp;&amp;amp; touch app.js，app.js内容为：  12345678910111213141516171819202122cons">
 
 
 
@@ -125,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="clausclaus.github.io/"/>
+  <link rel="canonical" href="clausclaus.github.io/2019/10/05/阿里云-CentOs7-部署笔记/"/>
 
 
 
 
 
-  <title>SmileXin</title>
+  <title>阿里云 CentOs7 部署笔记 | SmileXin</title>
   
 
 
@@ -161,8 +163,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -255,9 +256,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -287,9 +288,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/05/阿里云-CentOs7-部署笔记/" itemprop="url">阿里云 CentOs7 部署笔记</a></h1>
+          <h1 class="post-title" itemprop="name headline">阿里云 CentOs7 部署笔记</h1>
         
 
         <div class="post-meta">
@@ -365,6 +364,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
 
           
             <div class="post-wordcount">
@@ -414,22 +418,38 @@
       
 
       
-        
-          
-          配置静态站点http://deploy-static.smilexin.com/
+        <h4 id="配置静态站点"><a href="#配置静态站点" class="headerlink" title="配置静态站点"></a>配置静态站点</h4><p><a href="http://deploy-static.smilexin.com/" target="_blank" rel="noopener">http://deploy-static.smilexin.com/</a></p>
+<ol>
+<li><p>通过ssh登录aliyun服务器，然后执行<code>mkdir /var/www/html/imooc/ &amp;&amp; cd /var/www/html/imooc/ &amp;&amp; touch app.js</code>，app.js内容为：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> homePage = <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="string">  &lt;html&gt;</span></span><br><span class="line"><span class="string">    &lt;head&gt;</span></span><br><span class="line"><span class="string">      &lt;meta charset="utf-8"&gt;</span></span><br><span class="line"><span class="string">      &lt;title&gt;Node.js 部署上线示例&lt;/title&gt;</span></span><br><span class="line"><span class="string">    &lt;/head&gt;</span></span><br><span class="line"><span class="string">    &lt;body&gt;</span></span><br><span class="line"><span class="string">      &lt;h1&gt; Node.js 部署发布&lt;/h1&gt;</span></span><br><span class="line"><span class="string">    &lt;/body&gt;</span></span><br><span class="line"><span class="string">  &lt;/html&gt;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    res.statusCode = <span class="number">200</span>;</span><br><span class="line">    res.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/html'</span>);</span><br><span class="line">    res.end(homePage);</span><br><span class="line">&#125;).listen(<span class="number">4321</span>, () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Server running at 4321'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行<code>npm i pm2 -g</code> 下载 pm2，前提是已经下载好了 nodeJs，在 imooc 目录下执行<code>pm2 start app.js</code>将项目启动起来，这里在浏览器上使用 IP 加端口号就可以访问到网页了</p>
+</li>
+<li><p>不想使用 IP 加端口号的方式访问网站的话，可以使用 Nginx 来反向代理 NodeJs 端口，执行<code>cd /etc/nginx/conf.d/ &amp;&amp; touch imooc-com-4321.conf</code>新建一个配置文件，内容为：</p>
+ <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过 upstream 我们可以设定一个简单的负载均衡策略，以应对将来可能的升级</span></span><br><span class="line"><span class="comment"># 首先定义一个 server 集群，里面可以加多个 server，每个 server 对应的值可以用域名，也可以直接用 IP，但我们通常不会用 IP 来访问，而是通过域名:</span></span><br><span class="line"><span class="attribute">upstream</span> imooc &#123;</span><br><span class="line">    <span class="attribute">server</span> <span class="number">127.0.0.1:4321</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="comment"># server_name指向的域名需要到阿里云的云解析DNS添加一条二级域名的记录才行</span></span><br><span class="line">    <span class="attribute">server_name</span> deploy-static.smilexin.com;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Gzip Compression</span></span><br><span class="line">    <span class="attribute">gzip</span> <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">gzip_comp_level</span> <span class="number">6</span>;</span><br><span class="line">    <span class="attribute">gzip_vary</span> <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">gzip_min_length</span>  <span class="number">1000</span>;</span><br><span class="line">    <span class="attribute">gzip_proxied</span> any;</span><br><span class="line">    <span class="attribute">gzip_types</span> text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;</span><br><span class="line">    <span class="attribute">gzip_buffers</span> <span class="number">16</span> <span class="number">8k</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="comment"># remote_addr 代表客户端的 IP</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="comment"># proxy_add_x_forwarded_for 获取真实的 IP</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="comment"># http_host 表示请求的 host 头</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$http_host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-NginX-Proxy <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># proxy_pass 指令实现代理。把域名代理到集群名上面</span></span><br><span class="line">        <span class="attribute">proxy_pass</span> http://imooc;</span><br><span class="line">        <span class="attribute">proxy_redirect</span> <span class="literal">off</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存退出后使用<code>systemctl status nginx.service</code>查看 nginx 状态是否有异常，没有的话则使用<code>systemctl restart nginx.service</code>将 nginx 重启</p>
+</li>
+<li>需要到阿里云的<a href="https://dc.console.aliyun.com/next/index#/domain/list/all-domain" target="_blank" rel="noopener">域名控制台</a>添加域名解析，具体请在 <a href="https://help.aliyun.com/document_detail/106535.html?spm=a2c4g.11186623.2.12.401c52fbHKAadL" target="_blank" rel="noopener">阿里云帮助文档</a> 中查找如果添加域名解析</li>
+<li>上诉步骤完成后，我这里的访问地址就是 <a href="http://deploy-static.smilexin.com/" target="_blank" rel="noopener">http://deploy-static.smilexin.com/</a></li>
+</ol>
+<h4 id="命令相关"><a href="#命令相关" class="headerlink" title="命令相关"></a>命令相关</h4><p>查看 nginx 状态: <code>systemctl status nginx.service</code></p>
+<p>重启 ssh: <code>systemctl restart sshd</code></p>
+<p>重启 nginx:<code>systemctl restart nginx.service</code></p>
+<p>pm2 查看进程：<code>pm2 ls</code></p>
+<p>pm2 启动进程： <code>pm2 start &lt;id&gt;</code> 第一次启动时需要到指定的启动脚本目录下执行<code>pm2 start &lt;js文件名称&gt;</code></p>
+<p>pm2 停止进程：<code>pm2 stop &lt;id&gt;</code></p>
+<p>Tips :</p>
+<p>​ 上诉操作如果遇到权限问题的话可以尝试在命令行前面添加 sudo 解决</p>
+<p>​ node 的安装以及版本管理可以使用<a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">nvm</a></p>
 
-通过ssh登录aliyun服务器，然后执行mkdir /var/www/html/imooc/ &amp;&amp; cd /var/www/html/imooc/ &amp;&amp; touch app.js，a
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/05/阿里云-CentOs7-部署笔记/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
       
     
+    
+      
+  <div class="article_TheEnd">-----感谢您的阅读-----</div>
+
+
     
     
     </div>
@@ -442,386 +462,116 @@
     
 
     
+      <div>
+        <script src="//cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+<ul class="post-copyright">
+  <li class="post-copyright-title">
+    <strong>post.copyright.title:</strong>
+    阿里云 CentOs7 部署笔记
+  </li>
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    SmileXin
+  </li>
+  <li class="post-copyright-created_at">
+    <strong>post.copyright.created_at:</strong>
+    2019-10-05
+  </li>
+  <li class="post-copyright-updated_at">
+    <strong>post.copyright.updated_at:</strong>
+    2019-10-05
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="clausclaus.github.io/2019/10/05/阿里云-CentOs7-部署笔记/" title="阿里云 CentOs7 部署笔记">clausclaus.github.io/2019/10/05/阿里云-CentOs7-部署笔记/</a>
+    <span class="copy-path"  title="点击复制文章链接" style="position:relative;">
+      <i class="fa fa-clipboard" data-clipboard-text="clausclaus.github.io/2019/10/05/阿里云-CentOs7-部署笔记/" ></i>
+      <div class="tool-tip" id="tool-tip" style="display: none;">复制成功</div>
+    </span>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+<script>
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+      $('#tool-tip').fadeIn(200, function() {
+        setTimeout(function() {
+          $('#tool-tip').fadeOut()
+        }, 1000)
+      })
+        console.log('复制成功!')
+	    });
+    });
+</script>
+<style>
+    .tool-tip {
+      font-size: 12px;
+      position: absolute;
+      right: -74px;
+      top: -5px;
+      width: 64px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      background: #000;
+      color: #ffffff;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+    }
+    .tool-tip:before {
+      content: "";
+      position: absolute;
+      left: -12px;
+      top: 50%;
+      margin-top: -5px;
+      border: 6px solid transparent;
+      border-right-color: #000000;
+    }
+</style>
+
+      </div>
+    
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="clausclaus.github.io/2019/10/02/Kylin构建以及运行/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SmileXin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.JPG">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SmileXin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/02/Kylin构建以及运行/" itemprop="url">Kylin构建以及运行</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-02T16:44:56+08:00">
-                2019-10-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/NodeJs/" rel="tag"><i class="fa fa-tag"></i> NodeJs</a>
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/10/02/Kylin构建以及运行/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/10/02/Kylin构建以及运行/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
+            <a href="/tags/Nginx/" rel="tag"><i class="fa fa-tag"></i> Nginx</a>
           
-
-          
-          
-             <span id="/2019/10/02/Kylin构建以及运行/" class="leancloud_visitors" data-flag-title="Kylin构建以及运行">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  853 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  3 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          
-          
-下载 Kylin 源码包： https://github.com/apache/kylin/archive/kylin-3.0.0-beta.tar.gz
-
-终端执行 tar -zxvf kylin-kylin-3.0.0-beta.tar.gz对源码进行解压缩
-
-执行cd kylin-kylin
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/02/Kylin构建以及运行/#more" rel="contents">
-              Read more &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/02/Kylin构建以及运行/" rel="next" title="Kylin构建以及运行">
+                <i class="fa fa-chevron-left"></i> Kylin构建以及运行
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    
-    
-    
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="clausclaus.github.io/2018/08/04/Vue-lifecycle/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SmileXin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.JPG">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SmileXin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/04/Vue-lifecycle/" itemprop="url">Vue lifecycle</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-04T16:57:07+08:00">
-                2018-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/08/04/Vue-lifecycle/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/08/04/Vue-lifecycle/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/08/04/Vue-lifecycle/" class="leancloud_visitors" data-flag-title="Vue lifecycle">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  209 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253import Vue from 'vue'new Vue(&#123;  el: '#root',  te
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/04/Vue-lifecycle/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    
-    
-    
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -831,10 +581,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -842,6 +593,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -862,8 +627,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -943,6 +717,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置静态站点"><span class="nav-number">1.</span> <span class="nav-text">配置静态站点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令相关"><span class="nav-number">2.</span> <span class="nav-text">命令相关</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1099,6 +889,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1116,6 +910,18 @@
       <script id="dsq-count-scr" src="https://https-clausclaus-github-io.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'clausclaus.github.io/2019/10/05/阿里云-CentOs7-部署笔记/';
+          this.page.identifier = '2019/10/05/阿里云-CentOs7-部署笔记/';
+          this.page.title = '阿里云 CentOs7 部署笔记';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-clausclaus-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
